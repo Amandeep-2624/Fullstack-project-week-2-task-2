@@ -16,7 +16,7 @@ body{
   justify-content: center;
   max-width: 400px;
   height: 300px;
-  margin: 50px auto;
+  margin: 100px auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
@@ -24,7 +24,7 @@ body{
 .NavBar{
   font-weight: bold;
   color: #ED7D31;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .FormContainer{
   display: flex;
@@ -33,8 +33,11 @@ body{
 }
 
 .title {
-  text-align: center;
+  padding: 5px;
   margin-top: 30px;
+  text-align: center;
+  font-size: 40px;
+  text-shadow:  2px 2px 2px black;
 }
 
 .label {
@@ -51,6 +54,7 @@ body{
 
 .button {
   width: 200px;
+   font-size: large;
   padding: 10px;
   background-color: #ff6b08;
   color: white;
