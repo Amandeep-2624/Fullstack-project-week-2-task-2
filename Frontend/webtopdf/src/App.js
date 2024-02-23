@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./App.css";
+import {toast } from 'react-toastify';
 
 function App() {
   const [url, setUrl] = useState('');
@@ -23,8 +24,9 @@ function App() {
       const pdfUrl = URL.createObjectURL(blob);
       setPdfUrl(pdfUrl);
       setLoading(false);
+      toast.success("PDF converted succesfully");
     } catch (error) {
-      setError('An error occurred while converting the webpage to PDF.');
+      toast.error('An error occurred while converting the webpage to PDF.');
       setLoading(false);
     }
   };
@@ -40,7 +42,7 @@ function App() {
               <input type="text" id="url" name="url" value={url} onChange={handleUrlChange} className="input" placeholder='Enter the URL of the Website'/><br /><br />
               <button type="submit" disabled={loading} className="button">Convert to PDF</button>
               {error && <p  className="error">{error}</p>}
-              {pdfUrl && <a href={pdfUrl} download="webpage.pdf" className="download">Download PDF</a>}
+              {pdfUrl && !loading && <a href={pdfUrl} download="webpage.pdf" className="download">Download PDF</a>}
               {loading && <div className="spinner"></div>}
           </form>
     </div>
