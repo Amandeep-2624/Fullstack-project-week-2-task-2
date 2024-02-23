@@ -10,6 +10,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+//backend logic to convert web to pdf.
 app.post('/convert', async (req, res) => {
   const { url } = req.body;
   try {
@@ -28,7 +30,7 @@ app.post('/convert', async (req, res) => {
           });
         });
 
-        
+     // logic for displaying pdf logic   
     const pdfBuffer = await page.pdf({
       printBackground: true,
       margin: { top: '20px', bottom: '20px', left: '20px', right: '20px'},
@@ -37,11 +39,15 @@ app.post('/convert', async (req, res) => {
     await browser.close();
     res.contentType('application/pdf');
     res.send(pdfBuffer);
-  } catch (error) {
+  }
+  // error handling for invalid webite url. 
+  catch (error) {
     res.status(500).json({ error: error.message});
   }
 });
 
+
+// listening on port 4000
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
